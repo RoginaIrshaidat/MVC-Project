@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ERP_Project.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1> @Session["id"]</h1>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolAvg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CertificateImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonalIDImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAccepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Major.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolAvg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CertificateImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonalIDImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAccepted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Major.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
+        </td>
+    </tr>
+}
+
+</table>

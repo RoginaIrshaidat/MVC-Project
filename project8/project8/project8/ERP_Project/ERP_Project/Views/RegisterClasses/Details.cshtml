@@ -1,0 +1,42 @@
+﻿@model ERP_Project.Models.RegisterClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RegisterClass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.isPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section.ClassNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.ClassNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.IdUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.IdUser)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.registerclasses }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

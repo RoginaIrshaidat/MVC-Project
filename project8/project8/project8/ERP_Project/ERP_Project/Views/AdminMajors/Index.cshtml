@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ERP_Project.Models.Major>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<h2 style="text-align:center">Majors</h2>
+<br />
+
+<p class="container">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+
+</p>
+
+@using (Html.BeginForm("Search", "AdminMajors"))
+{
+
+    <div class="input-group">
+        <input class="form-control" type="text" name="searchQuery" placeholder="Enter Faculity Name" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+        <input type="submit" value="Search" name="Name" style="padding: 6px 10px;" class="btn btn-primary">
+    </div>
+    <br />
+    <table class="table table-striped table-hover ">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoursNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Faculty.Name)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoursNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Faculty.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) <br /><br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

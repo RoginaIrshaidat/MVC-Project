@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<ERP_Project.Models.Major>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="hero-section overlay bg-cover" data-background='url(~/theme/images/banner/img3.jpg)'>
+    <div class="container">
+   
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="section-title text-white">Majors</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <!-- blog post -->
+                @foreach (var item in Model)
+                {
+                    <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                        <div style=" height: 400px;" class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                            <h3 class="text-center"> @Html.DisplayFor(modelItem => item.Name)   </h3>
+                            <h5 class="text-center"> @Html.DisplayFor(modelItem => item.Faculty.Name) Faculty</h5>
+                            <div class="card-body">
+                                <ul class="list-inline mb-3">
+                                    <!-- post date -->
+                                    <li class="list-inline-item mr-3 ml-0">
+                                        Hours Number: @Html.DisplayFor(modelItem => item.HoursNum)
+                                    </li>
+                                    <!-- author -->
+                                    <li class="list-inline-item mr-3 ml-0">Hour's Price:@Html.DisplayFor(modelItem => item.Price) </li>
+                                </ul>
+                                <div style=" height: 230px;"><h6 class="card-title">  @Html.DisplayFor(modelItem => item.Description)</h6></div>
+
+                                @Html.ActionLink("Enroll Now", "Register", "Account", new { id = item.ID }, new { @class = "btn btn-primary btn-sm" })
+
+                            </div>
+                        </div>
+                    </article>
+                }
+
+            </div>
+        </div>
+
+</section>
+
+
+
+
