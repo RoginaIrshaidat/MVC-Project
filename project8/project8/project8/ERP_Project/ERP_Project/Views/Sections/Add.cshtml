@@ -205,86 +205,23 @@
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        @if (TempData["swal_message"] != null)
+        {
+            <script>
+                  swal({
+                  title: "@ViewBag.title",
+                  text: "@TempData["swal_message"]",
+                 icon: "@ViewBag.icon"
+                });
+            </script>
+        }
+
+
 </body>
+
+
 </html>
 
-
-
-
-@*<h2>Add</h2>
-
-        <h3>Are you sure you want to delete this?</h3>
-        <div>
-            <h4>Section</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ClassNumber)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ClassNumber)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Days)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Days)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.StartTime)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.StartTime)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.EndTime)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.EndTime)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ClassStatus)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ClassStatus)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Instructor)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Instructor)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Location)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Location)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Subject.Subject_Name)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Subject.Subject_Name)
-                </dd>
-
-            </dl>
-
-
-    </div>*@
 
 

@@ -25,16 +25,22 @@ namespace ERP_Project.Models
         public int StudentId { get; set; }
         public string IdUser { get; set; }
         public Nullable<int> IdMajor { get; set; }
-       
+        [Required]
         public string FirstName { get; set; }
-      
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public Nullable<System.DateTime> BirthDate { get; set; }
+        [Required]
         public Nullable<bool> Gender { get; set; }
         public string PhoneNum { get; set; }
+        [Required]
         public string StudentImg { get; set; }
+        [Required]
         public Nullable<double> SchoolAvg { get; set; }
+        [Required]
         public string CertificateImg { get; set; }
+        [Required]
         public string PersonalIDImg { get; set; }
         public Nullable<bool> IsAccepted { get; set; }
         public string studentEmail { get; set; }

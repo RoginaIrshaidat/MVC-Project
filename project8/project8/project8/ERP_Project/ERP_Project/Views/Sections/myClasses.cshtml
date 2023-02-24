@@ -187,10 +187,11 @@
 
                     @foreach (var item in Model)
                     {
-                        if (item.isPaid == false || item.isPaid == null) { 
+                        if (item.isPaid == false || item.isPaid == null)
+                        {
 
-                <input id="save" type="submit" class="btn btn-success " data-toggle="modal" value="Save" data-target="#staticBackdrop" />
-                    }  
+                            <input id="save" type="submit" class="btn btn-success " data-toggle="modal" value="Save" data-target="#staticBackdrop" />
+                        }
                     }
 
 
@@ -342,7 +343,18 @@
             </div>
         </div>
     </div>
+    @if (TempData["swal_message"] != null)
+    {
+        <script>
+    swal({
+      title: "@ViewBag.title",
+      text: "@TempData["swal_message"]",
+      icon: "@ViewBag.icon"
+    });
+        </script>
+    }
     <script src="~/dist/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js%22%3E</script>
 </body>
 
 

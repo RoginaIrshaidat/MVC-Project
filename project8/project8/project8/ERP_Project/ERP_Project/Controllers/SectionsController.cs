@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Antlr.Runtime;
 using ERP_Project.Models;
 using Microsoft.AspNet.Identity;
 
@@ -66,23 +67,48 @@ namespace ERP_Project.Controllers
             foreach (var x in db.RegisterClasses.ToList())
             {
                 if (idss == x.student_id && subId == x.ClassID)
-                {
-                    //error
+                {                
                     flag = false;
                     break;
                 }
             }
-
-            if (flag == true)
+            if (flag == false)
             {
-                RegisterClass register = new RegisterClass();
-                register.student_id = idss;
-                register.ClassID = id;
-
-                db.RegisterClasses.Add(register);
-                db.SaveChanges();
+                TempData["swal_message"] = $"Already you add this section ";
+                ViewBag.title = "Error";
+                ViewBag.icon = "error";
             }
 
+            bool timeCheck = true;
+            if (flag == true)
+            {
+                var time = (from startTime in db.Sections where startTime.ClassID == id select new { startTime.StartTime }).FirstOrDefault();
+                foreach (var x in db.RegisterClasses.ToList())
+                {
+                    if (x.Section.StartTime == time.StartTime )
+                    {
+                        timeCheck = false;
+                        break;
+                    }                  
+                    
+                }
+                if (timeCheck == true)
+                {
+                    RegisterClass register = new RegisterClass();
+                    register.student_id = idss;
+                    register.ClassID = id;
+
+                    db.RegisterClasses.Add(register);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    TempData["swal_message"] = $" you have class in the same time ";
+                    ViewBag.title = "Error";
+                    ViewBag.icon = "error";
+                    
+                }
+            }
             return RedirectToAction("myClasses", "Sections", Session["StudentIdSession"]);
 
         }
