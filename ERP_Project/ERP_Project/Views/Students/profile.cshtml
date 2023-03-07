@@ -1,0 +1,333 @@
+﻿@model ERP_Project.Models.Student
+
+@{
+    ViewBag.Title = "profile";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Project Management Dashboard UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="~/dist/style.css">
+    <link rel="stylesheet" href="~/dist/profile.css">
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>*@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            left: 0px;
+            background-color: #1a1a37;
+        }
+
+        .emp-profile {
+            padding: 3%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            border-radius: 0.5rem;
+            background: #fff;
+        }
+
+        .profile-img {
+            text-align: center;
+        }
+
+            .profile-img img {
+                width: 70%;
+                height: 100%;
+            }
+
+            .profile-img .file {
+                position: relative;
+                overflow: hidden;
+                margin-top: -20%;
+                width: 70%;
+                border: none;
+                border-radius: 0;
+                font-size: 15px;
+                background: #212529b8;
+            }
+
+                .profile-img .file input {
+                    position: absolute;
+                    opacity: 0;
+                    right: 0;
+                    top: 0;
+                }
+
+        .profile-head h5 {
+            color: #333;
+        }
+
+        .profile-head h6 {
+            color: #0062cc;
+        }
+
+        .profile-edit-btn {
+            border: none;
+            border-radius: 1.5rem;
+            width: 70%;
+            padding: 2%;
+            font-weight: 600;
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .proile-rating {
+            font-size: 12px;
+            color: #818182;
+            margin-top: 5%;
+        }
+
+            .proile-rating span {
+                color: #495057;
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+        .profile-head .nav-tabs {
+            margin-bottom: 5%;
+        }
+
+            .profile-head .nav-tabs .nav-link {
+                font-weight: 600;
+                border: none;
+            }
+
+                .profile-head .nav-tabs .nav-link.active {
+                    border: none;
+                    border-bottom: 2px solid #0062cc;
+                }
+
+        .profile-work {
+            padding: 14%;
+            margin-top: -15%;
+        }
+
+            .profile-work p {
+                font-size: 12px;
+                color: #818182;
+                font-weight: 600;
+                margin-top: 10%;
+            }
+
+            .profile-work a {
+                text-decoration: none;
+                color: #495057;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            .profile-work ul {
+                list-style: none;
+            }
+
+        .profile-tab label {
+            font-weight: 600;
+        }
+
+        .profile-tab p {
+            font-weight: 600;
+            color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+    @*<h1> @Session["major"]</h1>*@
+    <!-- partial:index.partial.html -->
+    <div class="app-container">
+        <div class="app-header" style="background-color: #ffbc3b">
+            <div class="app-header-left">
+                <span class="app-icon"></span>
+                <p class="app-name">Alandalus University</p>
+            </div>
+            <div class="app-header-right">
+
+                <button class="profile-btn">
+                    @Html.Partial("_LoginPartial")
+                </button>
+            </div>
+            <button class="messages-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+            </button>
+        </div>
+        <div class="app-content" style="background-color: #1a1a37">
+            <div class="app-sidebar" style="background-color: #ffbc3b">
+
+                <a href="@Url.Action("index", "Home")" class="app-sidebar-link active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                </a>
+                @if (User.IsInRole("Student"))
+                {
+
+                    <a href="@Url.Action("index", "Subjects")" class="app-sidebar-link">
+                        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
+                            <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
+                        </svg>
+
+                    </a>
+
+                    <a href="@Url.Action("myClasses", "Sections")" class="app-sidebar-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                    </a>
+                    <a href="@Url.Action("profile", "students")" class="app-sidebar-link">
+                        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-user" viewBox="0 0 24 24">
+                            <path d="M12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8C16 10.2091 14.2091 12 12 12Z" />
+                            <path d="M21 20.9999V19.9999C21 17.7908 19.2091 15.9999 17 15.9999H7C4.79086 15.9999 3 17.7908 3 19.9999V20.9999" />
+                        </svg>
+                    </a>
+
+                }
+            </div>
+            <div class="projects-section" style="background-color: #1a1a37">
+
+                <!------ Include the above in your HEAD tag ---------->
+
+                <div class="container emp-profile">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="profile-img">
+                                    <img src="~/Images/@Model.StudentImg" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-head">
+                                    <h5>
+                                        @Model.FirstName  @Model.LastName
+                                    </h5>
+                                    <h6>
+                                        @Model.Major.Name
+                                    </h6>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <p class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About</p>
+                                        </li>
+                                        @*<li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                        </li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                                @*@Html.ActionLink("Edit", "Edit", "Students", new { id =Convert.ToInt32(Session["userid"] )})*@
+                                @*<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />*@
+                            </div>
+                        </div>
+                        <div class="row">
+                            @*<div class="col-md-4">*@
+                            @*<div class="profile-work">
+                                <p>First Name</p>
+                                <a href="">Website Link</a><br />
+                                <a href="">Bootsnipp Profile</a><br />
+                                <a href="">Bootply Profile</a>
+                                <p>SKILLS</p>
+                                <a href="">Web Designer</a><br />
+                                <a href="">Web Developer</a><br />
+                                <a href="">WordPress</a><br />
+                                <a href="">WooCommerce</a><br />
+                                <a href="">PHP, .Net</a><br />
+                            </div>*@
+                            @*</div>*@
+                            <div class="col-md-12">
+                                <div class="tab-content profile-tab" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>First Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.FirstName  </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Last Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.LastName</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.PhoneNum</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gender</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                @if (Model.Gender == false)
+                                                {
+                                                    <p> Female </p>
+                                                }
+                                                else
+                                                {
+                                                    <p> Male </p>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Birth Date</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.BirthDate</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Major</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>@Model.Major.Name</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/dist/script.js"></script>
+
+</body>
+</html>
+
+
+
+
+@*@Html.ActionLink("Subject", "subject", "Majors", new { id = Model.IdMajor }, "")*@
+
+
+
+
+

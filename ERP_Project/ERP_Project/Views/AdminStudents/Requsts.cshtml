@@ -1,0 +1,163 @@
+﻿@model IEnumerable<ERP_Project.Models.Student>
+
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+
+    .i {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+    }
+
+        .i:hover {
+            transform: scale(2);
+        }
+
+    .n {
+        display: none;
+    }
+</style>
+
+<div class="card card2 p-3">
+
+
+    @{
+        if (ViewBag.result != null)
+        {
+            <style>
+                #uu {
+                    display: none;
+                }
+
+                .n {
+                    display: block;
+                }
+            </style>
+        }
+    }
+
+    <h1 style="text-align:center" class="mt-4">Requests</h1>
+
+    <table class="table table-fit mt-5 table-active table-primary " id="uu" style="font-size:14px;">
+        <thead style=" border-radius: 6px; overflow: hidden;">
+            <tr style=" border-radius: 6px; overflow: hidden;">
+                <th>
+                    First Name
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    BirthDate
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Student Image
+                </th>
+                <th>
+                    School Avg
+                </th>
+                <th>
+                    Certificate Image
+                </th>
+                <th>
+                    Personal ID Image
+                </th>
+                <th>
+                    Accepted Status
+                </th>
+
+                <th>
+                    Major
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @if (item.Gender == true)
+                    {
+                        <span> Male </span>
+                    }
+                    else
+                    {
+                        <span> Female </span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNum)
+                </td>
+                <td>
+
+                    <img class="i" src="../Images/@item.StudentImg" style="width:100px;" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolAvg)
+                </td>
+                <td>
+                    <img class="i" src="../Images/@item.CertificateImg" style="width:100px;" />
+                </td>
+                <td>
+                    <img class="i" src="../Images/@item.PersonalIDImg" style="width:100px;" />
+                </td>
+                <td>
+                    @if (item.IsAccepted == true)
+                    {
+                        <span> Accepted </span>
+                    }
+                    else
+                    {
+                        <span> Undefined </span>
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Major.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Accept", "accept", "AdminStudents", new { id = item.StudentId }, new { @class = "btn btn-success" })
+
+                </td>
+                <td>
+
+                    @Html.ActionLink("Reject", "reject", "AdminStudents", new { id = item.StudentId }, new { @class = "btn btn-danger" })
+
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

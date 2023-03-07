@@ -1,0 +1,160 @@
+﻿@model IEnumerable<ERP_Project.Models.Faculty>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<style>
+
+    .i {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+    }
+
+        .i:hover {
+            transform: scale(2);
+        }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1200px;
+        margin-block: 2rem;
+        gap: 2rem;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: clamp(20rem, calc(20rem + 2vw), 22rem);
+        overflow: hidden;
+        box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+        border-radius: 1em;
+        background: #ECE9E6;
+        background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    }
+
+
+
+    .card__body {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+
+    .tag {
+        align-self: flex-start;
+        padding: .25em .75em;
+        border-radius: 1em;
+        font-size: .75rem;
+    }
+
+        .tag + .tag {
+            margin-left: .5em;
+        }
+
+    .tag-blue {
+        background: #56CCF2;
+        background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+        color: #fafafa;
+    }
+
+    .tag-brown {
+        background: #D1913C;
+        background: linear-gradient(to bottom, #FFD194, #D1913C);
+        color: #fafafa;
+    }
+
+    .tag-red {
+        background: #cb2d3e;
+        background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+        color: #fafafa;
+    }
+
+    .card__body h4 {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+
+    .card__footer {
+        display: flex;
+        padding: 1rem;
+        margin-top: auto;
+    }
+
+    .user {
+        display: flex;
+        gap: .5rem;
+    }
+
+    .user__image {
+        border-radius: 50%;
+    }
+
+    .user__info > small {
+        color: #666;
+    }
+</style>
+<br />
+<h2 style="text-align:center" class="mt-4">Faculties</h2>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create", "AdminFaculties", null, new { @class = "btn btn-primary" })
+
+</p>
+
+@using (Html.BeginForm("Search", "AdminFaculties"))
+{
+    <div class="input-group">
+        <input class="form-control" type="text" name="searchQuery" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+        <input type="submit" value="Search" name="Name" style="padding: 6px 10px;" class="btn btn-primary">
+    </div>
+    <br />
+    <div class="container">
+        @foreach (var item in Model)
+        {
+
+            <div class="card">
+                <div class="card__header">
+                    <img src="~/@item.ImgFaculty" alt="card__image" class="card__image" width="600">
+                </div>
+                <div class="card__body">
+                    <span class="tag tag-blue">Acceptance Rate @item.AcceptanceRate</span>
+                    <h4>@item.Name</h4>
+                    <p>@item.Description</p>
+                </div>
+                <div class="card__footer">
+
+                </div>
+            </div>
+        }
+    </div>
+
+}

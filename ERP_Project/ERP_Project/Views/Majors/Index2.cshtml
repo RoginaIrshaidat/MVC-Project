@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<ERP_Project.Models.Major>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    body {
+        background-color: #1a1a37;
+    }
+</style>
+<!-- contact -->
+<section class="section bg-gray" style="margin-top:100px">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-black-50 ">Majors</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- blog post -->
+            @foreach (var item in Model)
+            {
+                <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+
+                        <img width="65%" class="m-5" src="~/Images/alandalus_university_logo.png" />
+                        <h3 class="text-center"> @Html.DisplayFor(modelItem => item.Name)   </h3>
+                        <h5 class="text-center"> @Html.DisplayFor(modelItem => item.Faculty.Name) Faculty</h5>
+                        <div class="card-body">
+                            <ul class="list-inline mb-3">
+                                <!-- post date -->
+                                <b>
+                                <li class="list-inline-item mr-3 ml-0">
+                                    Hours Number: @Html.DisplayFor(modelItem => item.HoursNum)
+                                </li></b>
+                                <!-- author -->
+                                <b>
+                                <li class="list-inline-item mr-3 ml-0">Hour's Price:@Html.DisplayFor(modelItem => item.Price) </li></b>
+                            </ul>
+                            <div style=" height: 200px;"><p style=" height: 140px;overflow:hidden;">  @Html.DisplayFor(modelItem => item.Description)</p></div>
+
+                            @Html.ActionLink("Enroll Now", "Register", "Account", new { id = item.ID }, new { @class = "btn btn-primary btn-sm" })
+
+                        </div>
+                    </div>
+                </article>
+            }
+
+        </div>
+    </div>
+
+</section>
+
+
+
+

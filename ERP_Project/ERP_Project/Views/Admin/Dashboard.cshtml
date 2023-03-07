@@ -1,0 +1,80 @@
+﻿@model ERP_Project.Models.Student
+
+
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card card2 p-3">
+
+    <h1 style="text-align:center" class="mt-4">statistics</h1>
+
+    <div class="d-flex flex-row gap-3 flex-wrap" style=" justify-content: center;">
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+                <div class="d-flex flex-column">
+                    <span class="type">Registerd Students</span><span class="number">@ViewBag.RegisteredCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5726/5726678.png" class="logo1" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+                <div class="d-flex flex-column">
+                    <span class="type">Accepted Students</span><span class="number">@ViewBag.AcceptedCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src="https://i.imgur.com/A8B9uFb.png" class="logo2" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+
+                <div class="d-flex flex-column">
+                    <span class="type"> Regected Students</span><span class="number">@ViewBag.RegectCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src="https://i.imgur.com/Dmh8Zim.png" class="logo3" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+                <div class="d-flex flex-column">
+                    <span class="type">Number Of Faculties</span><span class="number">@ViewBag.FacultiesCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src=" https://cdn-icons-png.flaticon.com/128/602/602182.png" class="logo4" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+                <div class="d-flex flex-column">
+                    <span class="type">Number Of Majors</span><span class="number">@ViewBag.MajorsCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src=" https://i.imgur.com/WwWhvGT.png" class="logo4" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+        <div class="card cardchild mt-3 p-2 px-3 py-3">
+            <div class="d-flex p-2 mt-2 justify-content-between rounded">
+                <div class="d-flex flex-column">
+                    <span class="type">Number Of Payment</span><span class="number">@ViewBag.PaymentsCount</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <img src=" https://cdn-icons-png.flaticon.com/512/639/639365.png" class="logo4" height="40" width="40" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

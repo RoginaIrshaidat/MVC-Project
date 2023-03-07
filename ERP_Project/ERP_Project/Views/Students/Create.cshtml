@@ -1,0 +1,114 @@
+﻿@model ERP_Project.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="hero-section overlay bg-cover" data-background="theme/images/banner/img2.jpg">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center hero-slider">
+                <div class="form-horizontal" style="gap:40px;">
+
+                    <h4 class="text-center text-white">Please Fill Your Information To Complete Your Registration</h4>
+                    <div class="form-group" >
+
+                    </div>
+
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">First Name</p>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">Last Name</p>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">Phone Number</p>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.PhoneNum, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNum, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">High school rate</p>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.SchoolAvg, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SchoolAvg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">Gender</p>
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+{
+    new SelectListItem { Text = "Male", Value = "True" },
+    new SelectListItem { Text = "Female", Value = "False" }
+}, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-4">Your Birth Date</p>
+                        <div class="col-md-12">
+                            @Html.TextBox("BirthDate", "BirthDate", new { type = "date" })
+
+                            @*@Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-5">Upload Your Image</p>
+                        <div class="col-md-12">
+                            @Html.TextBox("StudentImg", "StudentImg", new { type = "file", accept = "image/*" })
+                            
+                            @Html.ValidationMessageFor(model => model.StudentImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-8"> Upload High school certificate </p>
+                        <div class="col-md-12">
+                            @Html.TextBox("CertificateImg", "CertificateImg", new { type = "file", accept = "image/*" })
+                            @Html.ValidationMessageFor(model => model.CertificateImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="text-white control-label col-md-8"> Upload Personal ID Image</p>
+                        <div class="col-md-12">
+                            @Html.TextBox("PersonalIDImg", "PersonalIDImg", new { type = "file", accept = "image/*" })
+                            @Html.ValidationMessageFor(model => model.PersonalIDImg, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-primary btn-sm" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
